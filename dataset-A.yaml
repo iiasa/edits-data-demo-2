@@ -1,0 +1,58 @@
+# This file is in YAML format
+# We might update the format (fields, structure) of such files over time.
+# This file is in format version 1.
+format: 1
+
+# Information about the data
+title: MESSAGEix-Transport outputs
+description: >
+  This is an example data description for EDITS.
+
+# Information about the data provider
+provider:
+  organisation: International Institute for Applied Systems Analysis (IIASA)
+  contact: kishimot@iiasa.ac.at
+
+# Arbitrary hierarchical classifiers describing the data
+classifiers:
+- "Kind :: Model output"
+- "Availability :: Collaborators only"
+
+# List of data dimensions
+dimensions:
+  time:
+    # scope and resolution: free text; required for every dimension
+    scope: 2020 to 2100
+    resolution: 5- or 10-year periods
+  space:
+    scope: global
+    resolution: 11 or 14 regions
+  technology:
+    # Description is optional for time/space, but required otherwise.
+    # We might settle on common definitions in the future, but for now
+    # each group can describe what specifically they mean by each concept
+    description: The powertrain technology of a transport vehicle.
+    scope: All transport technologies
+    resolution: a list of 12 technologies; see https://example.com/more-info
+  fuel:
+    description: The energy carrier used by a transport vehicle.
+    resolution: a list of 3 fuels
+    scope: Only liquid fuels
+    
+# List of data measures
+measures:
+  energy:
+    description: Energy consumed by all transport vehicles in a given period.
+  stock:
+    description: Quantity of vehicles in use.
+
+# List of different data available
+data:
+- measure: energy
+  dimensions: [time, space, technology, fuel]
+  units: EJ
+- measure: stock
+  # Different dimensions for this measure vs. the one above
+  dimensions: [time, space, technology]
+  # Dimensionless
+  units: ""
